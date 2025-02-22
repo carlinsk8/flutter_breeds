@@ -27,7 +27,6 @@ flutter build apk -t lib/main.dart \
 ```
 
 ## 📸 Capturas de pantalla
-![domain diagram](assets/screenshots/domain-layer-diagram.png)
 ![Screenshot 1](assets/screenshots/1.jpg)  
 ![Screenshot 2](assets/screenshots/2.jpg)  
 ![Screenshot 2](assets/screenshots/3.jpg)  
