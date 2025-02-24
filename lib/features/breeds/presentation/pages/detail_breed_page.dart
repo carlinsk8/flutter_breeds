@@ -182,8 +182,7 @@ class _DetailBreedPageState extends State<DetailBreedPage> {
     );
   }
 
-  Widget _buildTextButton({required String text, String? url}) {
-    return TextButton(
+  Widget _buildTextButton({required String text, String? url}) => TextButton(
       onPressed: () {
         if (url != null) {
           _launchUrl(url);
@@ -194,7 +193,6 @@ class _DetailBreedPageState extends State<DetailBreedPage> {
         style: kStyleUnderline,
       ),
     );
-  }
 
   Future<void> _launchUrl(String urlString) async {
     final url = Uri.parse(urlString);

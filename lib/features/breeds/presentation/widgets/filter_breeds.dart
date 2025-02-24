@@ -11,9 +11,7 @@ class FilterBreeds extends StatefulWidget {
   });
 
   @override
-  FilterBreedsState createState() {
-    return FilterBreedsState();
-  }
+  FilterBreedsState createState() => FilterBreedsState();
 }
 
 class FilterBreedsState extends State<FilterBreeds> {
@@ -30,8 +28,7 @@ class FilterBreedsState extends State<FilterBreeds> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
+  Widget build(BuildContext context) => Column(
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -64,16 +61,13 @@ class FilterBreedsState extends State<FilterBreeds> {
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: _suggestions.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return ToppingSuggestion(_suggestions[index],
-                      onTap: _selectSuggestion);
-                },
+                itemBuilder: (BuildContext context, int index) => ToppingSuggestion(_suggestions[index],
+                      onTap: _selectSuggestion),
               ),
             ),
           ),
       ],
     );
-  }
 
   Future<void> _onSearchChanged(String value) async {
     final List<String> results = await _suggestionCallback(value);
@@ -84,10 +78,8 @@ class FilterBreedsState extends State<FilterBreeds> {
     });
   }
 
-  Widget _chipBuilder(BuildContext context, String topping) {
-    return ToppingInputChip(
+  Widget _chipBuilder(BuildContext context, String topping) => ToppingInputChip(
         topping: topping, onDeleted: _onChipDeleted, onSelected: _onChipTapped);
-  }
 
   void _selectSuggestion(String topping) {
     final provider = context.read<BreedsProvider>();
@@ -134,9 +126,7 @@ class FilterBreedsState extends State<FilterBreeds> {
 
   FutureOr<List<String>> _suggestionCallback(String text) {
     if (text.isNotEmpty) {
-      return _listChip.where((String topping) {
-        return topping.toLowerCase().contains(text.toLowerCase());
-      }).toList();
+      return _listChip.where((String topping) => topping.toLowerCase().contains(text.toLowerCase())).toList();
     }
     return const <String>[];
   }
@@ -225,12 +215,10 @@ class ChipsInputState<T> extends State<ChipsInput<T>> {
     _previousSelection = controller.selection;
   }
 
-  static int countReplacements(String text) {
-    return text.codeUnits
+  static int countReplacements(String text) => text.codeUnits
         .where(
             (int u) => u == ChipsInputEditingController.kObjectReplacementChar)
         .length;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -310,13 +298,11 @@ class ToppingSuggestion extends StatelessWidget {
   final ValueChanged<String>? onTap;
 
   @override
-  Widget build(BuildContext context) {
-    return ListTile(
+  Widget build(BuildContext context) => ListTile(
       key: ObjectKey(topping),
       title: Text(topping),
       onTap: () => onTap?.call(topping),
     );
-  }
 }
 
 class ToppingInputChip extends StatelessWidget {
@@ -332,8 +318,7 @@ class ToppingInputChip extends StatelessWidget {
   final ValueChanged<String> onSelected;
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
+  Widget build(BuildContext context) => Container(
       margin: const EdgeInsets.only(right: 3),
       child: InputChip(
         key: ObjectKey(topping),
@@ -344,5 +329,4 @@ class ToppingInputChip extends StatelessWidget {
         padding: const EdgeInsets.all(2),
       ),
     );
-  }
 }

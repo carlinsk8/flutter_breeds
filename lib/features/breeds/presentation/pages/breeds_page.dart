@@ -72,9 +72,7 @@ class _BreedsPageState extends State<BreedsPage> {
     return ListView.builder(
       controller: _scrollController,
       itemCount: images.length,
-      itemBuilder: (context, index) {
-        return ItemImageBreed(images: images[index]);
-      },
+      itemBuilder: (context, index) => ItemImageBreed(images: images[index]),
     );
   }
 
@@ -85,7 +83,7 @@ class _BreedsPageState extends State<BreedsPage> {
 
     final res = await provider.getListImagesBreeds(page: page);
     if (res == 0) return;
-    _scrollController.animateTo(
+    await _scrollController.animateTo(
       _scrollController.offset + 10.0,
       curve: Curves.fastOutSlowIn,
       duration: const Duration(seconds: 1),

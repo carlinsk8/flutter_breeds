@@ -24,12 +24,10 @@ abstract class BaseDioClient {
     return _instance;
   }
 
-  Future<String> checkToken(String token) async {
-    return _getToken();
-  }
+  Future<String> checkToken(String token) async => _getToken();
 
   Future<String> _getToken() async {
-    String token = await getToken();
+    final String token = await getToken();
     return token;
   }
 
@@ -44,28 +42,22 @@ abstract class BaseDioClient {
     try {
       final response = await action();
       return response;
-    } catch (e) {
-      if (e is DioException) {
-        if (e.type == DioExceptionType.badResponse) {
-          final response = e.response;
-          final statusCode = response?.statusCode;
+    } on DioException catch (e) {
+      if (e.type == DioExceptionType.badResponse) {
+        final response = e.response;
+        final statusCode = response?.statusCode;
 
-          switch (statusCode) {
-            case HttpStatus.unauthorized:
-              throw UnauthorisedException(json.encode(response?.data));
-            default:
-              throw ServerException(json.encode(response?.data));
-          }
-        } else {
-          throw ServerException(
-              'Error occured while Communication with Server');
+        switch (statusCode) {
+          case HttpStatus.unauthorized:
+            throw UnauthorisedException(json.encode(response?.data));
+          default:
+            throw ServerException(json.encode(response?.data));
         }
       } else {
-        e as DioException;
-        final error = e.error as DioException;
-        throw ServerException(error.message);
+        throw ServerException(
+            'Error occured while Communication with Server');
       }
-    }
+        }
   }
 }
 

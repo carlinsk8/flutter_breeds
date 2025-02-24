@@ -11,8 +11,7 @@ class ItemImageBreed extends StatelessWidget {
   const ItemImageBreed({super.key, required this.images});
 
   @override
-  Widget build(BuildContext context) {
-    return RepaintBoundary(
+  Widget build(BuildContext context) => RepaintBoundary(
       child: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
@@ -70,10 +69,8 @@ class ItemImageBreed extends StatelessWidget {
         ),
       ),
     );
-  }
 
-  Widget _buildTextContainer(String text) {
-    return Container(
+  Widget _buildTextContainer(String text) => Container(
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -87,5 +84,4 @@ class ItemImageBreed extends StatelessWidget {
         ),
       ),
     );
-  }
 }

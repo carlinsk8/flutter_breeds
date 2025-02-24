@@ -5,9 +5,7 @@ class ResponseModel<T> {
     this.data,
   });
 
-  factory ResponseModel.fromJson(T? json) {
-    return ResponseModel(
+  factory ResponseModel.fromJson(T? json) => ResponseModel(
       data: json,
     );
-  }
 }

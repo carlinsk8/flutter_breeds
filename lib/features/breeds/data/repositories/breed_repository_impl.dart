@@ -30,7 +30,7 @@ class BreedRepositoryImpl extends BreedRepository {
       final data =
           (body.data as List).map((e) => BreedModel.fromJson(e)).toList();
       return Right(data);
-    } catch (e, _) {
+    } on AppException catch (e, _) {
       return Left(UnexpectedFailure(message: _responseError(e)));
     }
   }
@@ -44,7 +44,7 @@ class BreedRepositoryImpl extends BreedRepository {
       // }
       final data = ImageBreedModel.fromJson(body.data);
       return Right(data);
-    } catch (e, _) {
+    } on AppException catch (e, _) {
       return Left(UnexpectedFailure(message: _responseError(e)));
     }
   }
@@ -74,7 +74,7 @@ class BreedRepositoryImpl extends BreedRepository {
     try {
       final data = ResponseModel.fromJson(json.decode(error.message ?? ''));
       return data.toString();
-    } catch (e) {
+    } on AppException catch (e, _) {
       return error.message;
     }
   }

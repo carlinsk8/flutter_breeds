@@ -7,9 +7,7 @@ abstract class AppException implements Exception {
   String? get message => _message;
 
   @override
-  String toString() {
-    return '$_prefix$_message';
-  }
+  String toString() => '$_prefix$_message';
 }
 
 class ServerException extends AppException {

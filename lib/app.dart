@@ -12,8 +12,7 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   @override
-  Widget build(BuildContext context) {
-    return MultiProvider(
+  Widget build(BuildContext context) => MultiProvider(
       providers: Providers.list,
       child: MaterialApp.router(
         routerConfig: routerConfig,
@@ -29,5 +28,4 @@ class _AppState extends State<App> {
         ),
       ),
     );
-  }
 }

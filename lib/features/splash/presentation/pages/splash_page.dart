@@ -30,8 +30,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       body: Stack(
         children: [
           Column(
@@ -66,5 +65,4 @@ class _SplashPageState extends State<SplashPage> {
         ],
       ),
     );
-  }
 }

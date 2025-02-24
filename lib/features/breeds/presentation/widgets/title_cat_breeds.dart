@@ -4,8 +4,7 @@ class TitleCatBreeds extends StatelessWidget {
   const TitleCatBreeds({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Row(
+  Widget build(BuildContext context) => Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(('Cat Breeds').toUpperCase(),
@@ -13,5 +12,4 @@ class TitleCatBreeds extends StatelessWidget {
         Image.asset('assets/images/logo_cat_n.png', width: 35),
       ],
     );
-  }
 }

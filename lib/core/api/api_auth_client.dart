@@ -5,7 +5,5 @@ class ApiAuthClient extends BaseDioClient {
   ApiAuthClient();
 
   @override
-  Future<String> getToken() async {
-    return Env.authToken;
-  }
+  Future<String> getToken() async => Env.authToken;
 }

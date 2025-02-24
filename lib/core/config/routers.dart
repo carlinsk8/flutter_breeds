@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_breeds/features/breeds/presentation/pages/breeds_page.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,8 +17,21 @@ final routerConfig = GoRouter(
     ),
     GoRoute(
       path: '/reedDetail',
-      builder: (context, state) =>
-          DetailBreedPage(params: state.extra as DetailBreedPageParams),
+      builder: (context, state) {
+        final params = state.extra;
+        if (params is DetailBreedPageParams) {
+          return DetailBreedPage(params: params);
+        }
+        return  Scaffold(
+          appBar: AppBar(
+            title: const Text('Error 401'),
+          ),
+          body: const Center(
+            child: Text('Error 401: params found'),
+          ),
+        ); 
+      },
     ),
   ],
+  
 );
