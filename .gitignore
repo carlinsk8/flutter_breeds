@@ -42,5 +42,5 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-.sonar-project.properties
-.test.output
+sonar-project.properties
+tests.output
